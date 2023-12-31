@@ -1,14 +1,16 @@
+type Theme = "light" | "dark";
+
 interface UserProfile {
   id: string;
 
   preferences: {
-    theme: "light" | "dark";
+    theme: Theme;
   };
 }
 
 let user: UserProfile = {
   id: "123",
   preferences: {
-    theme: "blue",
+    theme: "dark",
   },
 };
