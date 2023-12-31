@@ -1,4 +1,13 @@
-const routingConfig = {
+interface Route {
+  path: string;
+  component: string;
+}
+
+interface RoutingConfig {
+  routes: Route[];
+}
+
+const routingConfig: RoutingConfig = {
   routes: [
     {
       path: "home",
@@ -6,7 +15,7 @@ const routingConfig = {
     },
     {
       path: "about",
-      component: 12,
+      component: "AboutComponent",
     },
     {
       path: "contact",
