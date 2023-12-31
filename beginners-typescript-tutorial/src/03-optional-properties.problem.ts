@@ -1,6 +1,19 @@
 import { expect, it } from "vitest";
 
-export const getName = (params: { first: string; last: string }) => {
+type NameParams = {
+  first: string;
+  last?: string;
+};
+
+/*Once again the same thing can be attached inline like { first: string; last?: string } or using 
+interface INameParams {
+  first : string;
+  last? : string;
+}
+REMEMBER = Use ? for optional properties
+*/
+
+export const getName = (params: NameParams) => {
   if (params.last) {
     return `${params.first} ${params.last}`;
   }
