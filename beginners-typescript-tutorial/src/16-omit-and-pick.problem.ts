@@ -10,7 +10,8 @@ interface User {
  * How do we create a new object type with _only_ the
  * firstName and lastName properties of User?
  */
+type UserWithoutId = Omit<User, "id">;
 
-type MyType = unknown;
-
-type tests = [Expect<Equal<MyType, { firstName: string; lastName: string }>>];
+type tests = [
+  Expect<Equal<UserWithoutId, { firstName: string; lastName: string }>>
+];
