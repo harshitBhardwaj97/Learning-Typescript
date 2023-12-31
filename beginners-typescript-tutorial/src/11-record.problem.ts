@@ -1,7 +1,12 @@
 import { expect, it } from "vitest";
 
+// Index Signature for Cache {}
+type Cache = {
+  [id: string]: string;
+};
+
 const createCache = () => {
-  const cache = {};
+  const cache: Cache = {};
 
   const add = (id: string, value: string) => {
     cache[id] = value;
