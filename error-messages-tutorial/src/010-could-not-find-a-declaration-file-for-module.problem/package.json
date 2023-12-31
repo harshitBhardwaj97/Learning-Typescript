@@ -9,5 +9,8 @@
   "author": "Matt Pocock",
   "dependencies": {
     "diff": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/diff": "^5.0.9"
   }
 }
