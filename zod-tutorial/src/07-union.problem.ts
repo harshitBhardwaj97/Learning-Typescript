@@ -3,9 +3,11 @@
 import { expect, it } from "vitest";
 import { z } from "zod";
 
+const PrivacyLevel = z.union([z.literal("private"), z.literal("public")]);
+
 const Form = z.object({
   repoName: z.string(),
-  privacyLevel: z.string(),
+  privacyLevel: PrivacyLevel,
   //              ^ 🕵️‍♂️
 });
 
@@ -22,7 +24,7 @@ it("Should fail if an invalid privacyLevel passed", async () => {
     validateFormInput({
       repoName: "mattpocock",
       privacyLevel: "something-not-allowed",
-    }),
+    })
   ).toThrowError();
 });
 
@@ -31,13 +33,13 @@ it("Should permit valid privacy levels", async () => {
     validateFormInput({
       repoName: "mattpocock",
       privacyLevel: "private",
-    }).privacyLevel,
+    }).privacyLevel
   ).toEqual("private");
 
   expect(
     validateFormInput({
       repoName: "mattpocock",
       privacyLevel: "public",
-    }).privacyLevel,
+    }).privacyLevel
   ).toEqual("public");
 });
