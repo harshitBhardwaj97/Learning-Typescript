@@ -1,6 +1,8 @@
-import React from "react";
+interface ButtonProps {
+  className: string;
+}
 
-export const Button = (props: unknown) => {
+export const Button = (props: ButtonProps) => {
   return <button className={props.className}></button>;
 };
 
