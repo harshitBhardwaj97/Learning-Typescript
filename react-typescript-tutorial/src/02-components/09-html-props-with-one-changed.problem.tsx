@@ -1,9 +1,12 @@
-import { ComponentProps } from "react";
 import { Equal, Expect } from "../helpers/type-utils";
 
-export const Input = (
-  props: ComponentProps<"input"> & { onChange: (value: string) => void }
-) => {
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+
+type TInputProps = Omit<InputProps, "onChange"> & {
+  onChange: (value: string) => void;
+};
+
+export const Input = (props: TInputProps) => {
   return (
     <input
       {...props}
@@ -19,7 +22,6 @@ const Parent = () => {
     <Input
       onChange={(e) => {
         console.log(e);
-
         type test = Expect<Equal<typeof e, string>>;
       }}
     ></Input>
