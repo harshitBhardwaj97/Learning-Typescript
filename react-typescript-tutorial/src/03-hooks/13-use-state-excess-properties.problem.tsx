@@ -1,8 +1,13 @@
 import { useState } from "react";
 
+interface Tag {
+  id: number;
+  value: string;
+}
+
 interface TagState {
   tagSelected: number | null;
-  tags: { id: number; value: string }[];
+  tags: Tag[];
 }
 
 export const Tags = () => {
@@ -17,11 +22,13 @@ export const Tags = () => {
           <button
             key={tag.id}
             onClick={() => {
-              setState((currentState) => ({
-                ...currentState,
-                // @ts-expect-error
-                tagselected: tag.id,
-              }));
+              setState(
+                (currentState): TagState => ({
+                  ...currentState,
+                  // @ts-expect-error
+                  tagselected: tag.id,
+                })
+              );
             }}
           >
             {tag.value}
@@ -30,18 +37,20 @@ export const Tags = () => {
       })}
       <button
         onClick={() => {
-          setState((currentState) => ({
-            ...currentState,
-            tags: [
-              ...currentState.tags,
-              {
-                id: new Date().getTime(),
-                value: "New",
-                // @ts-expect-error
-                otherValue: "something",
-              },
-            ],
-          }));
+          setState(
+            (currentState): TagState => ({
+              ...currentState,
+              tags: [
+                ...currentState.tags,
+                {
+                  id: new Date().getTime(),
+                  value: "New",
+                  // @ts-expect-error
+                  otherValue: "something",
+                },
+              ],
+            })
+          );
         }}
       >
         Add Tag
